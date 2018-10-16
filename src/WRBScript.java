@@ -9,12 +9,12 @@ import org.antlr.v4.runtime.tree.ParseTree;
 	 
 		@Override
 		public double parse(String expression) {
-			ANTLRInputStream input = new ANTLRInputStream( expression);
+			ANTLRInputStream input = new ANTLRInputStream(expression);
     		WRBLexer lexer = new WRBLexer(input);
     		CommonTokenStream tokens = new CommonTokenStream(lexer);
     		WRBParser parser = new WRBParser(tokens);
-    		ParseTree parseTree = parser.expr();
-    		Visitor visitor = new Visitor();
+    		ParseTree parseTree = parser.formula();
+    		Visitor visitor = new Visitor(this);
     		return visitor.visit(parseTree);
 		}
 

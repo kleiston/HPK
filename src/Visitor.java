@@ -1,5 +1,11 @@
 
 public class Visitor extends WRBBaseVisitor<Double> {
+	
+	private Script mScript;
+	
+	public Visitor(final Script script) {
+		mScript = script;
+	}
 
 	@Override public Double visitMulDiv(WRBParser.MulDivContext ctx) {
 		Double left = visit(ctx.expr(0));
@@ -25,5 +31,11 @@ public class Visitor extends WRBBaseVisitor<Double> {
 
 	@Override public Double visitNumb(WRBParser.NumbContext ctx) {
 		return Double.valueOf(ctx.Number().getText());
-		}	
+		}
+	
+	@Override public Double visitAssign(WRBParser.AssignContext ctx) {
+		Double value = visit(ctx.expr());
+		if (mScript != null) mScript.setVariable(ctx.Var().getText(), value);
+		return value;
+	}
 }

@@ -106,5 +106,22 @@ class WRBScriptTest {
         String task = " 2*(4.0 + 3)";
         assertEquals(14, script.parse(task), eps);
     }
-
+    
+    @Test
+    public void testAssignmentSimple() throws Exception {
+    	String task = "testkey13 = 13.00";
+    	assertEquals(13.00, script.parse(task), eps);
+    }
+    
+    @Test
+    public void testAssignmentFloat() throws Exception {
+    	String task = "test13key = 13.373";
+    	assertEquals(13.373, script.parse(task), eps);
+    }
+    
+    @Test
+    public void testAssignmentExpression() throws Exception {
+    	String task = "testkey59: 42 + 17.99";
+    	assertEquals(59.99, script.parse(task), eps);
+    }
 }
