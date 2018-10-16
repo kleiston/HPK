@@ -15,7 +15,7 @@ expr: expr op=('*'|'/') expr # MulDiv
 
 /* A number: can be an integer value, or a decimal value */
 Number
-    :    ('0'..'9')+ ('.' ('0'..'9')+)?
+    :    ('-')*('0'..'9')+ ('.' ('0'..'9')+)?
     ;
       
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
