@@ -4,6 +4,7 @@ public class Visitor extends WRBBaseVisitor<Double> {
 	private Script mScript;
 	
 	public Visitor(final Script script) {
+		super();
 		mScript = script;
 	}
 
