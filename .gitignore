@@ -1,1 +1,7 @@
 /build/
+
+/.classpath/
+
+/.settings/com.github.jknack.antlr4ide.Antlr4.prefs/
+
+/target/generated-sources/antlr4/.gitignore/
