@@ -1,5 +1,5 @@
 /**
- * Define a grammar called Hello
+ * Define a grammar called WRB
  */
 grammar WRB;
 
@@ -13,11 +13,14 @@ expr: expr op=('*'|'/') expr # MulDiv
     | '('expr')'             # Parens
     ;
 
+
+
+
 /* A number: can be an integer value, or a decimal value */
 Number
-    :    ('-')*('0'..'9')+ ('.' ('0'..'9')+)?
+    :    ('-')?('0'..'9')+ ('.' ('0'..'9')+)?
     ;
-      
+          
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
 ADD: '+';
 SUB: '-';
