@@ -15,24 +15,13 @@ class WRBScriptTest {
 	public  void setUp() throws Exception {
 		script = new WRBScript();
 	}
-	
-	/**
-     * Test method for {@link de.lab4inf.wrb.Script#parse(java.lang.String)}.
-     * Testing some very simple operation. More to come...
-     */
-	
-	
-	/**
-     * Get the actual implementation for the script test.
-     * 
-     * @return script implementation
-     */
+
     protected Script getScript() {
         return new WRBScript();
     }
    
     
-    @Test()
+    @Test
     public final void testGetUnknownVariable() throws Exception {
     	 Assertions.assertThrows(IllegalArgumentException.class, () -> {
     		 	String key = "dummy";
