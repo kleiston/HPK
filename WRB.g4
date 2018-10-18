@@ -25,7 +25,7 @@ Var: Word Int? Word*;
 Number: (SUB)?Int ('.' Int)?;
           
 Int: ('0'..'9')+;
-Word: ['a-zA-Z_']+;
+Word: ('a'..'z' |'A'..'Z' | '_')+;
           
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
 ADD: '+';
