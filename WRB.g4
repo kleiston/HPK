@@ -7,7 +7,9 @@ options {
 	language = Java;
 }
 
-formula: expr | assign;
+start: statement  ;
+
+statement: (expr (';')?)* | (assign (';')?)* ;
 
 expr: expr op=(MUL|DIV) expr # MulDiv
     | expr op=(ADD|SUB) expr # AddSub

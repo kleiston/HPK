@@ -8,3 +8,14 @@
 /WRBVisitor.java
 /WRBBaseListener.java
 /WRBListener.java
+/WRBBaseVisitor.class
+/WRBLexer.class
+/WRBParser$AddSubContext.class
+/WRBParser$AssignContext.class
+/WRBParser$ExprContext.class
+/WRBParser$FormulaContext.class
+/WRBParser$MulDivContext.class
+/WRBParser$NumbContext.class
+/WRBParser$ParensContext.class
+/WRBParser.class
+/WRBVisitor.class

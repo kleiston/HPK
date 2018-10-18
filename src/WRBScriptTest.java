@@ -1,7 +1,10 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import de.lab4inf.wrb.Script;
 
 class WRBScriptTest {
 
@@ -27,12 +30,24 @@ class WRBScriptTest {
     protected Script getScript() {
         return new WRBScript();
     }
-
-    /**
-     * Test method for
-     * {@link de.lab4inf.wrb.Script#setVariable(java.lang.String,double)}. and
-     * {@link de.lab4inf.wrb.WRBScript#getVariable(java.lang.String)}.
-     */
+   
+    
+    @Test()
+    public final void testGetUnknownVariable() throws Exception {
+    	 Assertions.assertThrows(IllegalArgumentException.class, () -> {
+    		 	String key = "dummy";
+    	        script.getVariable(key);
+    		  });
+    }
+    
+    @Test
+    public void testAssignmentExpression() throws Exception {
+    	String varName = "testKey59";
+    	String task = varName + ": 42 + 17.99";
+    	script.parse(task);
+    	assertEquals(59.99, script.getVariable(varName), eps);
+    }
+    
     @Test
     public final void testSetGetVariable() throws Exception {
         double y, x = 2.78;
@@ -117,11 +132,5 @@ class WRBScriptTest {
     public void testAssignmentFloat() throws Exception {
     	String task = "test13key = 13.373";
     	assertEquals(13.373, script.parse(task), eps);
-    }
-    
-    @Test
-    public void testAssignmentExpression() throws Exception {
-    	String task = "testkey59: 42 + 17.99";
-    	assertEquals(59.99, script.parse(task), eps);
     }
 }

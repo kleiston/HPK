@@ -1,3 +1,4 @@
+import de.lab4inf.wrb.Script;
 
 public class Visitor extends WRBBaseVisitor<Double> {
 	
