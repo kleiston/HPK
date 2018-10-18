@@ -20,7 +20,6 @@ class WRBScriptTest {
         return new WRBScript();
     }
    
-    
     @Test
     public final void testGetUnknownVariable() throws Exception {
     	 Assertions.assertThrows(IllegalArgumentException.class, () -> {
@@ -32,7 +31,7 @@ class WRBScriptTest {
     @Test
     public void testAssignmentExpression() throws Exception {
     	String varName = "testKey59";
-    	String task = varName + ": 42 + 17.99";
+    	String task = varName + "= 42 + 17.99";
     	script.parse(task);
     	assertEquals(59.99, script.getVariable(varName), eps);
     }
@@ -50,7 +49,6 @@ class WRBScriptTest {
         assertEquals(x, y, eps);
     }
 	
-
     @Test
     public final void testPlus() throws Exception {
         String task = "2+3";
@@ -109,17 +107,5 @@ class WRBScriptTest {
     public void testParseBracket() throws Exception {
         String task = " 2*(4.0 + 3)";
         assertEquals(14, script.parse(task), eps);
-    }
-    
-    @Test
-    public void testAssignmentSimple() throws Exception {
-    	String task = "testkey13 = 13.00";
-    	assertEquals(13.00, script.parse(task), eps);
-    }
-    
-    @Test
-    public void testAssignmentFloat() throws Exception {
-    	String task = "test13key = 13.373";
-    	assertEquals(13.373, script.parse(task), eps);
     }
 }
