@@ -29,7 +29,7 @@ import de.lab4inf.wrb.Script;
 			if (values.containsKey(varName)) {
 				return values.get(varName).doubleValue();
 			}
-		throw new IllegalArgumentException("variable " + varName + " not found!");
+		throw new IllegalArgumentException("variable " + varName + " not set!");
 		}
 
 		@Override
