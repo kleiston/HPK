@@ -35,6 +35,12 @@ public class Visitor extends WRBBaseVisitor<Double> {
 		return Double.valueOf(ctx.Number().getText());
 		}
 	
+	@Override 
+	public Double visitVariable(WRBParser.VariableContext ctx) {
+		String variableName = ctx.Var().getText();
+		return mScript.getVariable(variableName);
+		}
+
 	@Override public Double visitAssign(WRBParser.AssignContext ctx) {
 		Double value = visit(ctx.expr());
 		if (mScript != null) mScript.setVariable(ctx.Var().getText(), value);

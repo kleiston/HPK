@@ -29,12 +29,21 @@ class WRBScriptTest {
     }
     
     @Test
-    public void testAssignmentExpression() throws Exception {
+    public void testSetVariableInExpression() throws Exception {
     	String varName = "testKey59";
     	String task = varName + "= 42 + 17.99";
     	script.parse(task);
     	assertEquals(59.99, script.getVariable(varName), eps);
     }
+    
+    @Test
+    public void testGetAssignmentInExpression() throws Exception {
+    	String varName = "a";
+    	script.setVariable(varName, 4);
+    	String task = "5 + " + varName;
+    	assertEquals(9.0, script.parse(task), eps);
+    }
+    
     
     @Test
     public final void testSetGetVariable() throws Exception {
@@ -83,6 +92,18 @@ class WRBScriptTest {
     public final void testMixedFloat() throws Exception {
         String task = "2.0/3 - 5.2*4";
         assertEquals(2. / 3.0 - 5.2 * 4, script.parse(task), eps);
+    }
+    
+    @Test
+    public final void testMixedFloatWithoutPre() throws Exception {
+        String task = "2 + .5";
+        assertEquals(2.5, script.parse(task), eps);
+    }
+    
+    @Test
+    public final void testMixedFloatWithoutPreSigned() throws Exception {
+        String task = "2 + -.5";
+        assertEquals(1.5, script.parse(task), eps);
     }
 
     @Test
