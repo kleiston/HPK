@@ -12,16 +12,21 @@ import de.lab4inf.wrb.Script;
  public class WRBScript implements Script {
 	 	 
 	 private HashMap<String, Double> values = new HashMap<String, Double>();
+	 private final CustomErrorListener errorListener = new CustomErrorListener();
 	 
 		@Override
 		public double parse(String expression) {
-			ANTLRInputStream input = new ANTLRInputStream(expression);
-    		WRBLexer lexer = new WRBLexer(input);
-    		CommonTokenStream tokens = new CommonTokenStream(lexer);
-    		WRBParser parser = new WRBParser(tokens);
-    		ParseTree parseTree = parser.start();
-    		Visitor visitor = new Visitor(this);
-    		return visitor.visit(parseTree);
+				ANTLRInputStream input = new ANTLRInputStream(expression);
+	    		WRBLexer lexer = new WRBLexer(input);
+	    		lexer.removeErrorListeners();
+	    		lexer.addErrorListener(errorListener);
+	    		CommonTokenStream tokens = new CommonTokenStream(lexer);
+	    		WRBParser parser = new WRBParser(tokens);
+	    		parser.removeErrorListeners();
+	    		parser.addErrorListener(errorListener);
+	    		ParseTree parseTree = parser.start();
+	    		Visitor visitor = new Visitor(this);
+	    		return visitor.visit(parseTree);
 		}
 
 		@Override
