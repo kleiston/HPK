@@ -1,13 +1,10 @@
-/**
- * Define a grammar called WRB
- */
 grammar WRB;
 
 options {
 	language = Java;
 }
 
-start: statement  ;
+start: statement;
 
 statement: (expr (';')?)* | (assign (';')?)* ;
 
@@ -20,11 +17,11 @@ expr: expr op=(MUL|DIV) expr # MulDiv
 
 assign: Var op=('='|':') expr;
 
-Var: Word Int? Word*;
 
-/* A number: can be an integer value, or a decimal value */
-Number: (SUB)?Int ('.' Int)? | (SUB)?('.' Int);
-          
+Var: Word Int? Word*;
+// A number: can be an integer/decimal value
+Number: ((SUB)?Int ('.' Int)? | (SUB)?('.' Int))BASE?;
+
 Int: ('0'..'9')+;
 Word: ('a'..'z' |'A'..'Z' | '_')+;
           
@@ -33,3 +30,4 @@ ADD: '+';
 SUB: '-';
 MUL: '*';
 DIV: '/';
+BASE: ['eE'](SUB|ADD)Int;
