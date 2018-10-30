@@ -10,12 +10,14 @@ statement: (expr (';')?)* | (assign (';')?)* ;
 
 expr: expr op=(MUL|DIV) expr # MulDiv
     | expr op=(ADD|SUB) expr # AddSub
+    | FUNCTIONSIGNATURE		 # Function
     | Number                 # Numb
     | Var					 # Variable
     | '('expr')'             # Parens
     ;
 
-assign: Var op=('='|':') expr;
+assign: Var op=('='|':') expr # assignVar |
+		FUNCTIONSIGNATURE op=('=' | ':') expr # assignFunction;
 
 
 Var: Word Int? Word*;
@@ -30,4 +32,6 @@ ADD: '+';
 SUB: '-';
 MUL: '*';
 DIV: '/';
-BASE: ['eE'](SUB|ADD)Int;
+BASE: ('e' | 'E')(SUB|ADD)Int;
+FUNCTIONNAME: Var;
+FUNCTIONSIGNATURE: FUNCTIONNAME '(' (Var)(','Var)* ')';

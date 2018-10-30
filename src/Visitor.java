@@ -1,3 +1,4 @@
+import de.lab4inf.wrb.Function;
 import de.lab4inf.wrb.Script;
 
 public class Visitor extends WRBBaseVisitor<Double> {
@@ -40,10 +41,25 @@ public class Visitor extends WRBBaseVisitor<Double> {
 		String variableName = ctx.Var().getText();
 		return mScript.getVariable(variableName);
 		}
-
-	@Override public Double visitAssign(WRBParser.AssignContext ctx) {
+	
+	@Override public Double visitAssignVar(WRBParser.AssignVarContext ctx) { 
 		Double value = visit(ctx.expr());
 		if (mScript != null) mScript.setVariable(ctx.Var().getText(), value);
 		return value;
 	}
+
+	@Override public Double visitAssignFunction(WRBParser.AssignFunctionContext ctx) { 
+		//if (mScript != null) mScript.setVariable(ctx.Var().getText(), value);
+		return 0.0;
+			
+	}
+	
+	@Override public Double visitFunction(WRBParser.FunctionContext ctx) {
+		Function fct;
+		if (mScript != null) {
+			System.out.println();
+		}
+		return 0.0;
+		}
+
 }
