@@ -12,6 +12,7 @@ import de.lab4inf.wrb.Script;
  public class WRBScript implements Script {
 	 	 
 	 private HashMap<String, Double> values = new HashMap<String, Double>();
+	 private HashMap<String, Function> functions = new HashMap<String, Function>();
 	 private final CustomErrorListener errorListener = new CustomErrorListener();
 	 
 		@Override
@@ -56,19 +57,20 @@ import de.lab4inf.wrb.Script;
 
 		@Override
 		public Set<String> getVariableNames() {
-			// TODO Auto-generated method stub
 			return null;
 		}
 
 		@Override
 		public void setFunction(String name, Function fct) {
-			// TODO Auto-generated method stub
+			this.functions.put(name, fct);
 			
 		}
 
 		@Override
 		public Function getFunction(String name) {
-			// TODO Auto-generated method stub
-			return null;
+			if (values.containsKey(name)) {
+				return functions.get(name);
+			}
+		throw new IllegalArgumentException("Function " + name + " not set!");
 		}
  }

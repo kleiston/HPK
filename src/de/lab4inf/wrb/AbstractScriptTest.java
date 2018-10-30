@@ -1068,6 +1068,7 @@ public abstract class AbstractScriptTest {
             assertEquals(asin(x), script.parse(task), EPS);
         }
     }
+ 
 
     @Test
     public final void testMathArcCos() throws Exception {
