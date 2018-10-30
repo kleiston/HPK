@@ -8,6 +8,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="/Users/Kai/Documents/Development/antlr.jar"/>
+	<classpathentry kind="lib" path="/Users/lucashintze/Documents/antlr-4.7.1-complete.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

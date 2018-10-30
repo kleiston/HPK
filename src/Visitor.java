@@ -57,7 +57,7 @@ public class Visitor extends WRBBaseVisitor<Double> {
 	@Override public Double visitFunction(WRBParser.FunctionContext ctx) {
 		Function fct;
 		if (mScript != null) {
-			System.out.println();
+			System.out.println(ctx.functionsignature().functionname().Var().getText());
 		}
 		return 0.0;
 		}

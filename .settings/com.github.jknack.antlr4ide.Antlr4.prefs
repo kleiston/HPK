@@ -1,5 +1,5 @@
-antlr4.antlrRegisteredTools=4.4@/var/folders/vx/960cd7jn08b3sj416yrzrt5w0000gn/T/antlr-4.4-complete.jar\:4.7.1@/Users/Kai/Documents/Development/antlr.jar
-antlr4.antlrToolPath=/Users/Kai/Documents/Development/antlr.jar
+antlr4.antlrRegisteredTools=4.4@/var/folders/vx/960cd7jn08b3sj416yrzrt5w0000gn/T/antlr-4.4-complete.jar\:4.7.1@/Users/lucashintze/Documents/antlr-4.7.1-complete.jar
+antlr4.antlrToolPath=/Users/lucashintze/Documents/antlr-4.7.1-complete.jar
 antlr4.encoding=UTF-8
 antlr4.listener=true
 antlr4.visitor=false
